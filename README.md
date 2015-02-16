@@ -26,8 +26,38 @@ Add comments to your specs.
 # @param kernel.panic Kernel behaviour on panic: delay
 # @note default: 0 (wait forever). Check 30 seconds before rebooting.
 context linux_kernel_parameter('kernel.panic') do
-  its(:value) { should <= 30 }>
+  its(:value) { should <= 30 }
 end
+```
+
+You're ready to go:
+
+```
+yardoc -e yard-serverspec spec/*_spec.rb
+```
+
+or You can do this by adding the following to your ``Rakefile``:
+
+```
+namespace :doc do
+  begin
+    require 'yard'
+    require 'yard/rake/yardoc_task'
+    require 'yard/serverspec/plugin'
+  rescue LoadError
+    raise 'YARD is not available. Try installing it.'
+  end
+  YARD::Config.load_plugin('serverspec-plugin')
+  YARD::Rake::YardocTask.new do |t|
+    t.files = ['spec/*_spec.rb']
+  end
+end
+```
+
+and type:
+
+```
+rake doc:yard
 ```
 
 ## Contributing

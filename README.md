@@ -60,6 +60,10 @@ and type:
 rake doc:yard
 ```
 
+then, you can see doc:
+
+![example-doc](https://dl.dropboxusercontent.com/u/80830728/yard-serverspec-plugin/kernel-panic.png)
+
 ## Contributing
 
 1. Fork it ( https://github.com/rrreeeyyy/yard-serverspec-plugin/fork )
